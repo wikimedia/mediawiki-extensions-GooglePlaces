@@ -1,0 +1,8 @@
+{
+    "@metadata": {
+		"authors": [
+			"Ike Hecht"
+		]
+    },
+    "google-places-desc": "Pulls data from the Google Places API into wiki pages"
+}

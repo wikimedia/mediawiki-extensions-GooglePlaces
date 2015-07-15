@@ -1,0 +1,34 @@
+{
+	"name": "GooglePlaces",
+	"author": "Ike Hecht",
+	"url": "https://www.mediawiki.org/wiki/Extension:GooglePlaces",
+	"descriptionmsg": "google-places-desc",
+	"version": "0.1",
+	"type": "parserhook",
+	"AutoloadClasses": {
+		"GooglePlacesHooks": "GooglePlaces.hooks.php",
+		"GooglePlacesCache": "GooglePlacesCache.php",
+		"Mills\\GooglePlaces\\googlePlaces": "lib/google-places/src/mills/google-places/googlePlaces.php"
+	},
+	"config": {
+		"GooglePlacesAPIKey": null,
+		"GooglePlacesExpiry": 600
+	},
+	"Hooks": {
+		"ParserFirstCallInit": [
+			"GooglePlacesHooks::onParserFirstCallInit"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"GooglePlacesHooks::onLoadExtensionSchemaUpdates"
+		]
+	},
+	"MessagesDirs": {
+       "GooglePlaces": [
+           "i18n"
+       ]
+   },
+	"ExtensionMessagesFiles": {
+		"GooglePlacesMagic": "GooglePlaces.i18n.magic.php"
+	},
+	"manifest_version": 1
+}
