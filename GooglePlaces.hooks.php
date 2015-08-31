@@ -17,8 +17,13 @@ class GooglePlacesHooks {
 	 * @param string $resultPath
 	 * @return string
 	 */
-	public static function googlePlaces( Parser &$parser, $placeID , $resultPath ) {
+	public static function googlePlaces( Parser &$parser, $placeID = null, $resultPath = null ) {
 		$details = self::getDetails( $placeID );
+
+		if ( empty( $details['result'] ) || !is_array( $details['result'] ) ) {
+			return '';
+		}
+
 		$output = self::getArrayElementFromPath( $details['result'], $resultPath );
 
 		self::insertPoweredBy();
@@ -27,8 +32,22 @@ class GooglePlacesHooks {
 		return $output;
 	}
 
-	public static function googlePlacesType( Parser &$parser, $placeID, $type, $field = '' ) {
+	/**
+	 *
+	 * @param Parser $parser
+	 * @param string $placeID
+	 * @param string $type
+	 * @param string $field
+	 * @return string
+	 */
+	public static function googlePlacesType( Parser &$parser, $placeID = null, $type = null,
+		$field = null ) {
 		$details = self::getDetails( $placeID );
+
+		if ( empty( $details['result'] ) || !is_array( $details['result'] ) ) {
+			return '';
+		}
+
 		$output = self::getArrayElementFromType( $details['result']['address_components'], $type, $field );
 
 		self::insertPoweredBy();
