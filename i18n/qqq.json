@@ -1,8 +1,8 @@
 {
-    "@metadata": {
+	"@metadata": {
 		"authors": [
 			"Ike Hecht"
 		]
-    },
-    "googleplaces-desc": "{{desc|name=GooglePlaces|url=http://www.mediawiki.org/wiki/Extension:GooglePlaces}}"
+	},
+	"googleplaces-desc": "{{desc|name=GooglePlaces|url=http://www.mediawiki.org/wiki/Extension:GooglePlaces}}"
 }
