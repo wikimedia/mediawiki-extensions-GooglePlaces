@@ -2,7 +2,7 @@
 	"name": "GooglePlaces",
 	"author": "Ike Hecht",
 	"url": "https://www.mediawiki.org/wiki/Extension:GooglePlaces",
-	"descriptionmsg": "google-places-desc",
+	"descriptionmsg": "googleplaces-desc",
 	"version": "0.1",
 	"type": "parserhook",
 	"AutoloadClasses": {
