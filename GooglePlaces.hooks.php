@@ -13,11 +13,22 @@ class GooglePlacesHooks {
 	/**
 	 *
 	 * @param Parser $parser
-	 * @param string $placeID
-	 * @param string $resultPath
+	 * @param string $placeIDSent
+	 * @param string $resultPathSent
 	 * @return string
 	 */
-	public static function googlePlaces( Parser &$parser, $placeID = null, $resultPath = null ) {
+	public static function googlePlaces( Parser &$parser, $placeIDSent = null, $resultPathSent = null ) {
+		static $placeID = '';
+		if ( $placeIDSent ) {
+			// Allow users to omit the first parameter. Use the place ID sent by last call.
+			$placeID = $placeIDSent;
+		}
+		static $resultPath = '';
+		if ( $resultPathSent ) {
+			// Allow users to omit the second parameter. Use the result path sent by last call.
+			$resultPath = $resultPathSent;
+		}
+
 		$details = self::getDetails( $placeID );
 
 		if ( empty( $details['result'] ) || !is_array( $details['result'] ) ) {
@@ -35,13 +46,25 @@ class GooglePlacesHooks {
 	/**
 	 *
 	 * @param Parser $parser
-	 * @param string $placeID
-	 * @param string $type
+	 * @param string $placeIDSent
+	 * @param string $typeSent
 	 * @param string $field
 	 * @return string
 	 */
-	public static function googlePlacesType( Parser &$parser, $placeID = null, $type = null,
+	public static function googlePlacesType( Parser &$parser, $placeIDSent = null, $typeSent = null,
 		$field = null ) {
+
+		static $placeID = '';
+		if ( $placeIDSent ) {
+			// Allow users to omit the first parameter. Use the place ID sent by last call.
+			$placeID = $placeIDSent;
+		}
+		static $type = '';
+		if ( $typeSent ) {
+			// Allow users to omit the second parameter. Use the type sent by last call.
+			$type = $typeSent;
+		}
+
 		$details = self::getDetails( $placeID );
 
 		if ( empty( $details['result'] ) || !is_array( $details['result'] ) ) {
