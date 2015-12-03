@@ -3,7 +3,7 @@
 	"author": "Ike Hecht",
 	"url": "https://www.mediawiki.org/wiki/Extension:GooglePlaces",
 	"descriptionmsg": "googleplaces-desc",
-	"version": "1.0",
+	"version": "1.1",
 	"type": "parserhook",
 	"AutoloadClasses": {
 		"GooglePlacesHooks": "GooglePlaces.hooks.php",

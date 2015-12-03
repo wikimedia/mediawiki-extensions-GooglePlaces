@@ -1,4 +1,5 @@
 <?php
+
 class GooglePlacesHooks {
 
 	/**
@@ -12,6 +13,7 @@ class GooglePlacesHooks {
 
 	/**
 	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 * @param Parser $parser
 	 * @param string $placeIDSent
 	 * @param string $resultPathSent
@@ -37,6 +39,10 @@ class GooglePlacesHooks {
 
 		$output = self::getArrayElementFromPath( $details['result'], $resultPath );
 
+		if ( is_array( $output ) ) {
+			$output = self::htmlEscapeImplode( ';', $output );
+		}
+
 		self::insertPoweredBy();
 		$output .= self::getTOSRequiredHTML( $details );
 
@@ -45,6 +51,7 @@ class GooglePlacesHooks {
 
 	/**
 	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 * @param Parser $parser
 	 * @param string $placeIDSent
 	 * @param string $typeSent
@@ -71,7 +78,8 @@ class GooglePlacesHooks {
 			return '';
 		}
 
-		$output = self::getArrayElementFromType( $details['result']['address_components'], $type, $field );
+		$output = self::getArrayElementFromType(
+				$details['result']['address_components'], $type, $field );
 
 		self::insertPoweredBy();
 		$output .= self::getTOSRequiredHTML( $details );
@@ -192,7 +200,7 @@ class GooglePlacesHooks {
 		if ( $element !== '' ) {
 			return $element;
 		} else {
-			foreach ( $result as $key => $value ) {
+			foreach ( $result as $value ) {
 				if ( is_array( $value ) ) {
 					$element = self::getArrayElementFromType( $value, $type, $field );
 					if ( $element !== '' ) {
@@ -210,7 +218,7 @@ class GooglePlacesHooks {
 	 * If $element is unset, return the first value of that sibling array.
 	 *
 	 * @param array $array
-	 * @param array $type
+	 * @param array $types
 	 * @param string $element
 	 */
 	private static function getElementWithMatchingType( array $array, $types, $element = '' ) {
@@ -220,7 +228,6 @@ class GooglePlacesHooks {
 				return $return;
 			} else {
 				return $array[$element];
-
 			}
 		} else {
 			return '';
@@ -254,5 +261,20 @@ class GooglePlacesHooks {
 		if ( !isset( $wgFooterIcons['poweredby']['googleplaces'] ) ) {
 			$wgFooterIcons['poweredby']['googleplaces'] = self::getFooterIcon();
 		}
+	}
+
+	/**
+	 * Implodes an array into a string, but also escapes instances of $glue into its HTML
+	 * ampersand representation.
+	 *
+	 * @param string $glue
+	 * @param array $pieces
+	 * @return string
+	 */
+	private static function htmlEscapeImplode( $glue, array $pieces ) {
+		foreach ( $pieces as &$piece ) {
+			$piece = str_replace( $glue, '&#' . ord( $glue ) . ';', $piece );
+		}
+		return implode( $glue, $pieces );
 	}
 }
