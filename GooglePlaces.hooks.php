@@ -58,16 +58,6 @@ class GooglePlacesHooks {
 
 	/**
 	 *
-	 * @param DatabaseUpdater $updater
-	 * @return boolean
-	 */
-	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		$updater->addExtensionTable( GooglePlacesCache::TABLE, __DIR__ . '/GooglePlaces.sql', true );
-		return true;
-	}
-
-	/**
-	 *
 	 * @global string $wgGooglePlacesAPIKey
 	 * @global int $wgGooglePlacesExpiry
 	 * @global array $wgFooterIcons
@@ -77,8 +67,7 @@ class GooglePlacesHooks {
 	private static function getDetails( $placeID ) {
 		global $wgGooglePlacesAPIKey, $wgGooglePlacesExpiry;
 
-		$request = array( 'api-key' => $wgGooglePlacesAPIKey, 'place-id' => $placeID );
-		$details = GooglePlacesCache::getCache( $request );
+		$details = GooglePlacesCache::getCache( $wgGooglePlacesAPIKey, $placeID );
 
 		if ( !$details ) {
 			$details = self::getDetailsFromGoogleAPI( $wgGooglePlacesAPIKey, $placeID );
@@ -87,7 +76,7 @@ class GooglePlacesHooks {
 				return self::getAnyErrors( $details['errors'] );
 			}
 
-			GooglePlacesCache::setCache( $request, $details, $wgGooglePlacesExpiry );
+			GooglePlacesCache::setCache( $wgGooglePlacesAPIKey, $placeID, $details, $wgGooglePlacesExpiry );
 		}
 		return $details;
 	}
@@ -123,7 +112,8 @@ class GooglePlacesHooks {
 		foreach ( $errors as $errorMessage ) {
 			$error .= ' ' . $errorMessage;
 		}
-		return Html::element( 'strong', array( 'class' => array( 'error', 'googleplaces-error' ) ), $error );
+		return Html::element(
+				'strong', array( 'class' => array( 'error', 'googleplaces-error' ) ), $error );
 	}
 
 	/**
