@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ike Hecht"
+			"Ike Hecht",
+			"Umherirrender"
 		]
 	},
-	"googleplaces-desc": "{{desc|name=GooglePlaces|url=http://www.mediawiki.org/wiki/Extension:GooglePlaces}}"
+	"googleplaces-desc": "{{desc|name=GooglePlaces|url=https://www.mediawiki.org/wiki/Extension:GooglePlaces}}"
 }
