@@ -20,10 +20,10 @@
 		]
 	},
 	"MessagesDirs": {
-       "GooglePlaces": [
-           "i18n"
-       ]
-   },
+		"GooglePlaces": [
+			"i18n"
+		]
+	},
 	"ExtensionMessagesFiles": {
 		"GooglePlacesMagic": "GooglePlaces.i18n.magic.php"
 	},
