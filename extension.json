@@ -8,7 +8,8 @@
 	"AutoloadClasses": {
 		"GooglePlacesHooks": "GooglePlaces.hooks.php",
 		"GooglePlacesCache": "GooglePlacesCache.php",
-		"Mills\\GooglePlaces\\googlePlaces": "lib/google-places/src/mills/google-places/googlePlaces.php"
+		"Mills\\GooglePlaces\\googlePlaces": "lib/google-places/src/mills/google-places/googlePlaces.php",
+		"Mills\\GooglePlaces\\googlePlacesCallType": "lib/google-places/src/mills/google-places/googlePlaces.php"
 	},
 	"config": {
 		"GooglePlacesAPIKey": null,
