@@ -3,6 +3,7 @@
 	"author": "Ike Hecht",
 	"url": "https://www.mediawiki.org/wiki/Extension:GooglePlaces",
 	"descriptionmsg": "googleplaces-desc",
+	"license-name": "GPL-2.0-or-later",
 	"version": "1.1",
 	"type": "parserhook",
 	"AutoloadClasses": {
