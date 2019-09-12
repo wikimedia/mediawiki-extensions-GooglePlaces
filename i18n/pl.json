@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Railfail536"
+			"Railfail536",
+			"Rail"
 		]
 	},
 	"googleplaces-desc": "Umieszcza dane z API Google Places wewnątrz stron wiki"
