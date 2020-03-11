@@ -17,9 +17,7 @@
 		"GooglePlacesExpiry": 600
 	},
 	"Hooks": {
-		"ParserFirstCallInit": [
-			"GooglePlacesHooks::onParserFirstCallInit"
-		]
+		"ParserFirstCallInit": "GooglePlacesHooks::onParserFirstCallInit"
 	},
 	"MessagesDirs": {
 		"GooglePlaces": [
