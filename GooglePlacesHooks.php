@@ -3,8 +3,7 @@
 class GooglePlacesHooks {
 
 	/**
-	 *
-	 * @param Parser $parser
+	 * @param Parser &$parser
 	 */
 	public static function onParserFirstCallInit( Parser &$parser ) {
 		$parser->setFunctionHook( 'googleplaces', 'GooglePlacesHooks::googlePlaces' );
@@ -12,11 +11,10 @@ class GooglePlacesHooks {
 	}
 
 	/**
-	 *
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 * @param Parser $parser
-	 * @param string $placeIDSent
-	 * @param string $resultPathSent
+	 * @param Parser &$parser
+	 * @param string|null $placeIDSent
+	 * @param string|null $resultPathSent
 	 * @return string
 	 */
 	public static function googlePlaces( Parser &$parser, $placeIDSent = null, $resultPathSent = null ) {
@@ -50,17 +48,15 @@ class GooglePlacesHooks {
 	}
 
 	/**
-	 *
 	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 * @param Parser $parser
-	 * @param string $placeIDSent
-	 * @param string $typeSent
-	 * @param string $field
+	 * @param Parser &$parser
+	 * @param string|null $placeIDSent
+	 * @param string|null $typeSent
+	 * @param string|null $field
 	 * @return string
 	 */
 	public static function googlePlacesType( Parser &$parser, $placeIDSent = null, $typeSent = null,
 		$field = null ) {
-
 		static $placeID = '';
 		if ( $placeIDSent ) {
 			// Allow users to omit the first parameter. Use the place ID sent by last call.
@@ -88,7 +84,6 @@ class GooglePlacesHooks {
 	}
 
 	/**
-	 *
 	 * @global string $wgGooglePlacesAPIKey
 	 * @global int $wgGooglePlacesExpiry
 	 * @global array $wgFooterIcons
@@ -113,7 +108,6 @@ class GooglePlacesHooks {
 	}
 
 	/**
-	 *
 	 * @param string $googlePlacesAPIKey
 	 * @param string $placeID
 	 * @return array
@@ -132,7 +126,6 @@ class GooglePlacesHooks {
 	}
 
 	/**
-	 *
 	 * @param array $errors
 	 * @return string HTML error message
 	 */
@@ -144,22 +137,21 @@ class GooglePlacesHooks {
 			$error .= ' ' . $errorMessage;
 		}
 		return Html::element(
-				'strong', array( 'class' => array( 'error', 'googleplaces-error' ) ), $error );
+				'strong', [ 'class' => [ 'error', 'googleplaces-error' ] ], $error );
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	private static function getFooterIcon() {
-		return array(
+		return [
 			'id' => 'powered-by-google',
 			'src' => '//maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white2.png',
 			'alt' => 'Powered by Google',
 			'width' => 104,
 			'height' => 16,
 			'style' => "background-color: white;"
-		);
+		];
 	}
 
 	/**
@@ -194,6 +186,7 @@ class GooglePlacesHooks {
 	 * @param array $result
 	 * @param string $type
 	 * @param string $field
+	 * @return string
 	 */
 	private static function getArrayElementFromType( $result, $type, $field ) {
 		$element = self::getElementWithMatchingType( $result, $type, $field );
@@ -220,6 +213,7 @@ class GooglePlacesHooks {
 	 * @param array $array
 	 * @param array $types
 	 * @param string $element
+	 * @return string
 	 */
 	private static function getElementWithMatchingType( array $array, $types, $element = '' ) {
 		if ( isset( $array['types'] ) && in_array( $types, $array['types'] ) ) {
@@ -235,7 +229,6 @@ class GooglePlacesHooks {
 	}
 
 	/**
-	 *
 	 * @param array $result
 	 * @return string
 	 */
@@ -250,7 +243,6 @@ class GooglePlacesHooks {
 	}
 
 	/**
-	 *
 	 * @global array $wgFooterIcons
 	 */
 	private static function insertPoweredBy() {

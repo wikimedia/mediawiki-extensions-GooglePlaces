@@ -12,7 +12,7 @@ class GooglePlacesCache {
 	 *
 	 * @param string $APIKey
 	 * @param string $placeID
-	 * @return string|boolean
+	 * @return string|bool
 	 */
 	public static function getCache( $APIKey, $placeID ) {
 		$cache = wfGetCache( CACHE_ANYTHING );
@@ -30,8 +30,8 @@ class GooglePlacesCache {
 	 * @param string $APIKey
 	 * @param string $placeID
 	 * @param string $response
-	 * @param integer $cache_expire
-	 * @return boolean
+	 * @param int $cache_expire
+	 * @return bool
 	 */
 	public static function setCache( $APIKey, $placeID, $response, $cache_expire = 0 ) {
 		$cache = wfGetCache( CACHE_ANYTHING );

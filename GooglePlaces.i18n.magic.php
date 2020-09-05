@@ -1,15 +1,15 @@
 <?php
 /**
-
+ *
  * @file
  * @author Ike Hecht
  */
-$magicWords = array();
+$magicWords = [];
 
 /** English
  * @author Ike Hecht
  */
-$magicWords['en'] = array(
-	'googleplaces' => array( 0, 'googleplaces' ),
-	'googleplacestype' => array( 0, 'googleplacestype' ),
-);
+$magicWords['en'] = [
+	'googleplaces' => [ 0, 'googleplaces' ],
+	'googleplacestype' => [ 0, 'googleplacestype' ],
+];
