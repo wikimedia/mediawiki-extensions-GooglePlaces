@@ -15,8 +15,8 @@ class GooglePlacesCache {
 	 * @return string|bool
 	 */
 	public static function getCache( $APIKey, $placeID ) {
-		$cache = wfGetCache( CACHE_ANYTHING );
-		$key = wfMemcKey( 'googleplaces', $APIKey, $placeID );
+		$cache = ObjectCache::getInstance( CACHE_ANYTHING );
+		$key = $cache->makeKey( 'googleplaces', $APIKey, $placeID );
 		$cached = $cache->get( $key );
 		wfDebugLog( "GooglePlaces",
 			__METHOD__ . ": got " . var_export( $cached, true ) .
@@ -34,8 +34,8 @@ class GooglePlacesCache {
 	 * @return bool
 	 */
 	public static function setCache( $APIKey, $placeID, $response, $cache_expire = 0 ) {
-		$cache = wfGetCache( CACHE_ANYTHING );
-		$key = wfMemcKey( 'googleplaces', $APIKey, $placeID );
+		$cache = ObjectCache::getInstance( CACHE_ANYTHING );
+		$key = $cache->makeKey( 'googleplaces', $APIKey, $placeID );
 		wfDebugLog( "GooglePlaces",
 			__METHOD__ . ": caching " . var_export( $response, true ) .
 			" from Google." );
