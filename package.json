@@ -1,4 +1,5 @@
 {
+	"name": "GooglePlaces",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
