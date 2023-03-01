@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"TomT0m"
+			"TomT0m",
+			"Verdy p"
 		]
 	},
-	"googleplaces-desc": "Extrait des données de l'API Google Places et les insère dans des pages du wiki"
+	"googleplaces-desc": "Extrait des données de l’API Google Places et les insère dans des pages du wiki"
 }
