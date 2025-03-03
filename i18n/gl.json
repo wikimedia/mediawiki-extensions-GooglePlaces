@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm"
+			"Elisardojm",
+			"Toliño"
 		]
 	},
-	"googleplaces-desc": "Extrae datos da API de Google Places nas páxinas da wiki"
+	"googleplaces-desc": "Extrae datos da API de Google Places nas páxinas do wiki"
 }
